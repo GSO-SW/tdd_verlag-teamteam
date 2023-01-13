@@ -1,6 +1,5 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Verlag;
 
 namespace VerlagTests
 {
@@ -20,7 +19,7 @@ namespace VerlagTests
 
 			//Assert
 			Assert.AreEqual(autor, b.Autor);
-			Assert.AreEqual(titel, b.Titel);
+			Assert.AreEqual(titel, b.titel);
 			Assert.AreEqual(auflage, b.Auflage);
 		}
 
