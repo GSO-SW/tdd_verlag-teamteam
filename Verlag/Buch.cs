@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Verlag;
 namespace Verlag
 {
-    internal class Buch
+    public class Buch
     {
         private string autor;
         private string buchtitel;
@@ -29,7 +29,6 @@ namespace Verlag
             get { return autor; }
             set { autor = value; }
         }
-        IndexOutOfRangeException e;
         public int Auflage
         {
             get { return auflage; }
@@ -37,7 +36,7 @@ namespace Verlag
             {
                 if (auflage <= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Auflage darf nicht 0 oder kleiner sein", e);
+                    throw new ArgumentOutOfRangeException("Auflage darf nicht 0 oder kleiner sein");
                 }
                 else
                 { 

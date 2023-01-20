@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Verlag;
 using VerlagTests;
@@ -92,21 +91,38 @@ namespace VerlagTests
 
 			//Act
 			b.Auflage = auflageNeu;
-		}
+        }
+        //List<string> unerlaubteZeichen = new List<string> { "", "#", ";", "§", "%" };
 
-		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
-		
-		
-		List<string> unerlaubteZeichen = new List<string> { "", "#", ";", "§", "%" };
+        //[ExpectedException(typeof(ArgumentException))]
+        //public void Autor_NurSinnvolleEingabenErlaubt(List<string> unerlaubteZeichen)
+        //{
+        //  foreach (var i in unerlaubteZeichen)
+        //{
+        //  //auf contains prüfen
+        //if (.contains = i)
+        //}
+        //}
+        // DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-		public void Autor_NurSinnvolleEingabenErlaubt(List<string> unerlaubteZeichen)
+		[DataRow("")]
+		[DataRow("#")]
+		[DataRow(";")]
+		[DataRow("§")]
+		[DataRow("%")]
+		[ExpectedException(typeof(ArgumentException))]
+		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
 		{
-            foreach (var i in unerlaubteZeichen)
-            {
-				//auf contains prüfen
-				if(.contains = i)
-            }
+			string testName = "Daniel Listwan";
+
+            Random rnd = new Random();
+            Console.WriteLine(rnd.Next(1, testName.Length + 1));
+			testName.Insert(Convert.ToInt32(rnd), unerlaubtesZeichen);
+
+
+
+			
+			Buch b = new Buch(unerlaubtesZeichen, "titel");
 		}
 	}
 }
