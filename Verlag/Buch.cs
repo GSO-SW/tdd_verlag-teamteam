@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace VerlagTests
+using Verlag;
+namespace Verlag
 {
     internal class Buch
     {
         private string autor;
-        private string titel;
+        private string buchtitel;
         private int auflage;
 
-        public Buch(string autorName, string titleName,int auflageName)
+        public Buch(string autorName, string titleName,int auflageNummer)
         {
             autor = autorName;
-            titel = titleName;
-            auflage = auflageName;
-            e = IndexOutOfRangeException;
+            buchtitel = titleName;
+            auflage = auflageNummer;
         }
         public Buch(string autorName, string titleName)
         {
             autor = autorName;
-            titel = titleName;
+            buchtitel = titleName;
             auflage = 1;
         }
         public string Autor
@@ -48,7 +47,7 @@ namespace VerlagTests
         }
         public string Titel
         {
-            get { return titel; }
+            get { return buchtitel; }
 
         }
     }

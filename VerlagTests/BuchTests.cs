@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Verlag;
+using VerlagTests;
 
 namespace VerlagTests
 {
@@ -19,7 +23,7 @@ namespace VerlagTests
 
 			//Assert
 			Assert.AreEqual(autor, b.Autor);
-			Assert.AreEqual(titel, b.titel);
+			Assert.AreEqual(titel, b.buchtitel);
 			Assert.AreEqual(auflage, b.Auflage);
 		}
 
@@ -91,18 +95,18 @@ namespace VerlagTests
 		}
 
 		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
-		[TestMethod]
-		[DataRow("")]
-		[DataRow("#")]
-		[DataRow(";")]
-		[DataRow("§")]
-		[DataRow("%")]
-		[DataRow(null)]
-		[ExpectedException(typeof(ArgumentException))]
-		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
+		
+		
+		List<string> unerlaubteZeichen = new List<string> { "", "#", ";", "§", "%" };
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+		public void Autor_NurSinnvolleEingabenErlaubt(List<string> unerlaubteZeichen)
 		{
-			//Act
-			Buch b = new Buch(unerlaubtesZeichen, "titel");
+            foreach (var i in unerlaubteZeichen)
+            {
+				//auf contains prüfen
+				if(.contains = i)
+            }
 		}
 	}
 }
